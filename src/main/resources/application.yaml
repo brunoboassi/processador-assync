@@ -26,12 +26,12 @@ spring:
                   serializer: org.springframework.kafka.support.serializer.JsonSerializer
       bindings:
         input:
-          destination: requests
+          destination: requestX
           group: requestsGroup
           consumer:
             partitioned: true
         output:
-          destination: responses
+          destination: responseX
           producer:
             partition-count: 2
             partition-key-expression: headers['partitionKey']
