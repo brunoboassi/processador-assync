@@ -32,9 +32,6 @@ spring:
             partitioned: true
         output:
           destination: responseX
-          producer:
-            partition-count: 2
-            partition-key-expression: headers['partitionKey']
 logging:
   level:
     root: INFO

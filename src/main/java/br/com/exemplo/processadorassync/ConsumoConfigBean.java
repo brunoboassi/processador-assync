@@ -7,6 +7,7 @@ import org.springframework.cloud.stream.messaging.Processor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.support.serializer.JsonDeserializer;
 import org.springframework.messaging.Message;
+import org.springframework.messaging.MessageHeaders;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.support.MessageBuilder;
 
@@ -20,6 +21,7 @@ public class ConsumoConfigBean {
     public Message<Response> load(Message<Request> msg) {
         log.info("Consumer {}", msg);
         Request payload = msg.getPayload();
+        MessageHeaders headers = msg.getHeaders();
         Response response = Response.builder()
                 .id(payload.getId())
                 .message("Message " + payload.getMessageIndex())
